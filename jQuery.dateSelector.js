@@ -24,14 +24,14 @@
  */
  
 
-$.widget("bam.dateSelector", { 
+$.widget("sub.dateSelector", { 
 
 	_MONTH_NAMES   : ["January","February","March","April","May","June","July","August","September","October","November","December"],
 	_WEEKDAY_NAMES : ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
 		
 	_cfg : {
 		date        : new Date(), // today by default // @TOTO use this
-		cssUrl      : "/shared/css/bam/bam.DateSelector.css", // @TODO use this
+		cssUrl      : "", // @TODO add support for this
 		allowRanges : false,
 		theme       : "default"
 	},
