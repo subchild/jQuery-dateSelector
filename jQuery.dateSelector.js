@@ -156,15 +156,15 @@ $.widget("sub.dateSelector", {
 				isDateInRange  = true,
 				monthTwoDigit  = this._getTwoDigit(this.month),
 				daysInMonth    = this._getDaysInMonth(),
-				out =   "<table class='monthNav'>" + 
+				out = "<table class='monthNav'>" + 
 					    "<tr>" +
 						    "<td class='monthLink'><a href='#' class='dateSel-prevMonthLink'>&laquo; Prev</a></td>" +
-							"<td class='curMonth'>" + this._getMonthName() + " " + this.year + "</div>" +
-							"<td class='monthLink' align='right'><a href='#' class='dateSel-nextMonthLink'>Next &raquo;</a></td>" +
-						"</tr>" +
-						"</table>" +
-						"<table class='monthDays' cellspacing='1'>" +
-						"<thead><tr>";
+								"<td class='curMonth'>" + this._getMonthName() + " " + this.year + "</div>" +
+								"<td class='monthLink next'><a href='#' class='dateSel-nextMonthLink'>Next &raquo;</a></td>" +
+							"</tr>" +
+							"</table>" +
+							"<table class='monthDays'>" +
+							"<thead><tr>";
 		for (var i=0; i<this._WEEKDAY_NAMES.length; i++){
 			out += "<td>" + this._WEEKDAY_NAMES[i] + "</td>";
 		}
@@ -215,7 +215,7 @@ $.widget("sub.dateSelector", {
 		if (this._cfg.allowRanges){
 			out += "<a href='#' class='dateSel-resetButton'>Reset</a>";
 		}
-		out += "</td><td align='right'><a href='#' class='dateSel-closeButton'>Close</a></td></tr>";
+		out += "</td><td class='dateSel-closeWrap'><a href='#' class='dateSel-closeButton'>Close</a></td></tr>";
 		out += "</table>";
 		return out;
 	},
@@ -226,10 +226,10 @@ $.widget("sub.dateSelector", {
 	 * @TODO consider using regex instead of substr()		 
 	 */
 	_highlightSelectedDays: function(){
-		var self = this;
+		var _self = this;
 		$.each(this.selectedDates, function(i, curDate){
-			if (_getTwoDigit(self.month)===curDate.substr(4,2) && self.year===curDate.substr(0,4)){
-				self._toggleCell("cell-" + curDate.substr(6,2), curDate, true);
+			if (_getTwoDigit(_self.month)===curDate.substr(4,2) && _self.year===curDate.substr(0,4)){
+				_self._toggleCell("cell-" + curDate.substr(6,2), curDate, true);
 			}
 		});
 	},
@@ -252,33 +252,33 @@ $.widget("sub.dateSelector", {
 		//	$.extend(_cfg, cfg); // configure	
 				
 		// Event handler assignments
-		var self = this;
+		var _self = this;
 		this.element.find(".dateSel-prevMonthLink").live("click", function(e){
 			e.preventDefault();
-			var d = self._getPrevMonthDate();
-			self.show(d.getMonth()+1, d.getFullYear());
-			self.element.trigger("prevMonthLink", [d.getMonth()+1, d.getFullYear()]);
+			var d = _self._getPrevMonthDate();
+			_self.show(d.getMonth()+1, d.getFullYear());
+			_self.element.trigger("prevMonthLink", [d.getMonth()+1, d.getFullYear()]);
 		});
 		this.element.find(".dateSel-nextMonthLink").live("click", function(e){
 			e.preventDefault();
-			var d = self._getNextMonthDate();
-			self.show(d.getMonth()+1, d.getFullYear());
-			self.element.trigger("nextMonthLink", [d.getMonth()+1, d.getFullYear()]);			
+			var d = _self._getNextMonthDate();
+			_self.show(d.getMonth()+1, d.getFullYear());
+			_self.element.trigger("nextMonthLink", [d.getMonth()+1, d.getFullYear()]);			
 		});
 		this.element.find(".dateSel-validDate").live("click", function(e){
 			e.preventDefault();
-			self._toggleCell($(this).attr("data-cell-id"), $(this).attr("data-date-string"), false);
-			self.element.trigger("dayClick");
+			_self._toggleCell($(this).attr("data-cell-id"), $(this).attr("data-date-string"), false);
+			_self.element.trigger("dayClick");
 		});
 		this.element.find(".dateSel-resetButton").live("click", function(e){
 			e.preventDefault();
-			self.reset();
-			self.element.trigger("reset");
+			_self.reset();
+			_self.element.trigger("reset");
 		});
 		this.element.find(".dateSel-closeButton").live("click", function(e){
 			e.preventDefault();
-			self.hide();
-			self.element.trigger("close");
+			_self.hide();
+			_self.element.trigger("close");
 		});
 	},
 	
