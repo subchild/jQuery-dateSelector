@@ -1,0 +1,26 @@
+/* DateSelector styles ****************************************/
+#dateSelectorWrap   {z-index:100; position:absolute; right:10px; top:70px; border:1px solid #ccc; display:none; background-color:#fff; padding:2px; width:200px;}
+
+#monthNav           {background-color:#fff;}
+.curMonth           {font:bold 11px arial; text-align:center; height:20px;}
+.monthLink a        {font:10px verdana; color:#369; padding:3px; text-decoration:none;}
+.monthLink a:hover  {text-decoration:underline; background:#999;}
+
+#monthDays thead td {font:bold 10px verdana; color:#eee; background-color:#666; padding:2px 0px; text-align:center;}
+#monthDays tbody td {font:10px verdana,arial; text-align:right; background-color:#ccc; width:26px; height:20px;}
+#monthDays .blank   {background-color:#eee;}
+#monthDays .day           {background-color:#ddd;padding:3px;}
+#monthDays .day.today           {background-color:#ccc;font-weight:bold;}
+#monthDays .day a         {color:#369; text-decoration:none; display:block;}
+#monthDays .day a:hover         {font-weight:bold;text-decoration:underline;}
+#monthDays .selectedDay   {background-color:#999;}
+#monthDays .selectedDay a {color:#fff; text-decoration:none; width:90%; height:auto; display:block;}
+
+#subLinks          {background-color:#fff; padding-top:3px;}
+#subLinks a        {font:10px verdana; color:#369; padding:3px;  text-decoration:none;}
+#subLinks a:hover  {text-decoration:underline;}
+
+#dateSelector {width:200px; background:#fff;border:1px solid #000;}
+
+#dateSelector table {width:100%;}
+/* end of DateSelector styles *********************************/
